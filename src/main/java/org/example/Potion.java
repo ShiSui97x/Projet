@@ -1,20 +1,20 @@
 package org.example;
 
 import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Potion {
-    @Getter
     private String name;
-    @Getter
-    private int healingPower;
+    private int potency;
+    private String effect;
 
-    public Potion(String name, int healingPower) {
+    public Potion(String name, int potency, String effect) {
         this.name = name;
-        this.healingPower = healingPower;
-    }
-
-    public void use(Wizard wizard) {
-        wizard.getPotions(wizard.getHealthPoints() + healingPower);
+        this.potency = potency;
+        this.effect = effect;
     }
 }
+
 

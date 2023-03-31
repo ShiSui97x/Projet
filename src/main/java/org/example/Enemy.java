@@ -1,14 +1,36 @@
 package org.example;
 
-public class Enemy extends AbstractEnemy {
+import lombok.*;
 
-    public Enemy(String name, int maxHP, int damage, int defense, int accuracy) {
-        super(name, maxHP, damage, defense, accuracy);
+@Getter
+@Setter
+public class Enemy extends AbstractEnemy {
+    private String name;
+
+    public Enemy(int healthPoints, int damage, int defense, int level, String name) {
+        super(healthPoints, damage, defense, level,name);
+        this.name = name;
     }
 
     @Override
-    public void specialAttack(Character character) {
-        // L'ennemi ordinaire n'a pas de spécialité
+    public void attack(Character enemy) {
+        enemy.takeDamage(this.getDamage());
+    }
+
+    @Override
+    public String toString() {
+        return "Enemy{" +
+                "name='" + name + '\'' +
+                ", healthPoints=" + this.getHealthPoints() +
+                ", damage=" + this.getDamage() +
+                ", defense=" + this.getDefense() +
+                ", level=" + this.getLevel() +
+                '}';
     }
 }
+
+
+
+
+
 

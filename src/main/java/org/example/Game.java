@@ -1,5 +1,7 @@
 package org.example;
 
+import lombok.Getter;
+
 import java.awt.*;
 import java.util.Scanner;
 
@@ -8,7 +10,8 @@ public class Game {
     private Wand wand;
     private SortingHat sortingHat;
     private List<Level> levels;
-    private int currentLevelIndex;
+    @Getter
+    public int currentLevelIndex;
 
     public Game(Wizard wizard, Wand wand, SortingHat sortingHat, List<Level> levels) {
         this.wizard = wizard;
@@ -26,7 +29,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
 
         while (wizard.isAlive() && (currentLevelIndex < levels.size())) {
-            Level level = levels.get(currentLevelIndex);
+            Level level = levels.index(levelNumber);
             System.out.println("Level " + level.getLevelNumber() + ":");
             System.out.println("You are facing " + level.getEnemy().getName() + "!");
             System.out.println("Prepare yourself for the battle!");

@@ -1,47 +1,27 @@
 package org.example;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
 public abstract class Character {
-    @Getter
-    @Setter
-    public String name;
-    public int maxHP;
-    @Getter
-    @Setter
-    public int currentHP;
-    @Getter
-    @Setter
+    private String name;
+    private int healthPoints;
     public int damage;
-    @Getter
-    @Setter
-    public int defense;
-    @Getter
-    @Setter
-    public int accuracy;
-    @Getter
-    @Setter
-    public House house;
+    private int defense;
+    private int level;
 
-    public Character(String name, int maxHP, int damage, int defense) {
-        this.name = name;
-        this.maxHP = maxHP;
-        this.currentHP = maxHP;
-        this.damage = damage;
-        this.defense = defense;
-        this.accuracy = accuracy;
-    }
-    public abstract void attack(Character character);
-    public abstract void defend(Character character);
+    public abstract void attack(Character enemy);
 
-    public List<Potion> getPotions() {
-        List<String> potions= new ArrayList<>();
-        potions.add("healingPotion");
-        return potions;
+    public void takeDamage(int damage) {
+        int actualDamage = Math.max(damage - defense, 0);
+        healthPoints = Math.max(healthPoints - actualDamage, 0);
     }
+
 }
+
+
+
+
 

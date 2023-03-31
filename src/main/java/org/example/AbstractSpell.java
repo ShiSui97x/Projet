@@ -1,25 +1,20 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class AbstractSpell {
-    @Getter
     private String name;
-    @Getter
-    private int baseDamage;
-    @Getter
-    private int baseSuccessRate;
+    private int damage;
+    private int successRate;
 
-    public AbstractSpell(String name, int baseDamage, int baseSuccessRate) {
-        this.name = name;
-        this.baseDamage = baseDamage;
-        this.baseSuccessRate = baseSuccessRate;
-    }
-
-
-    public abstract int getDamage();
-
-    public abstract void cast(Wizard wizard);
+    public abstract void cast(Character target);
 }
 
 

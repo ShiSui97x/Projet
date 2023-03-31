@@ -1,59 +1,24 @@
 package org.example;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class Spell extends AbstractSpell {
-    @Getter
-    @Setter
-    private int damage;
-    @Getter
-    @Setter
-    private int precision;
-    @Getter
-    @Setter
-    public String name;
-
-    public List<String> knowSpells;
-
-    public Spell(String name, int successRate, int damage) {
-        super(name, successRate, damage);
-        this.damage = damage;
-
+    public Spell(String name, int damage, int successRate) {
+        super(name, damage, successRate);
     }
-
 
     @Override
-    public void cast(Wizard wizard) {
-        switch (this.getName()) {
-            case "Wingardium Leviosa":
-                // Code pour lancer le sort Wingardium Leviosa
-                break;
-            case "Accio":
-                // Code pour lancer le sort Accio
-                break;
-            case "Expecto Patronum":
-                // Code pour lancer le sort Expecto Patronum
-                break;
-            case "Expelliarmus":
-                // Code pour lancer le sort Expelliarmus
-                break;
-            default:
-                System.out.println("Sort inconnu : " + this.getName());
+    public void cast(Character target) {
+        if (Math.random() < getSuccessRate() / 100.0) {
+            target.takeDamage(getDamage());
+            System.out.println("Spell " + getName() + " successfully cast on " + target.getName() + " for " + getDamage() + " damage.");
+        } else {
+            System.out.println("Spell " + getName() + " failed to cast on " + target.getName() + ".");
         }
-    }
-
-    public int getSuccessChance() {
-        switch(this.name){
-            case "Wingardium Leviosa":
-
-            default:
-                throw new IllegalStateException("Unexpected value: " + this.name);
-        }
-
     }
 }
-

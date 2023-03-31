@@ -1,19 +1,27 @@
 package org.example;
 
-import java.util.*;
-
 import java.util.Random;
 
 public class SortingHat {
-    private List<House> houses = Arrays.asList(new Gryffindor(), new Hufflepuff(), new Ravenclaw(), new Slytherin());
+    private final Random random;
 
-    public House assignHouse(Wizard wizard) {
-        House house = houses.get(new Random().nextInt(houses.size()));
-        house.welcome(wizard);
-        return house;
+    public SortingHat() {
+        this.random = new Random();
+    }
+
+    public House assignHouse() {
+        int houseIndex = random.nextInt(4);
+        switch (houseIndex) {
+            case 0:
+                return new House("Gryffindor", "resistance to damage");
+            case 1:
+                return new House("Hufflepuff", "efficiency with potions");
+            case 2:
+                return new House("Ravenclaw", "accuracy with spells");
+            case 3:
+                return new House("Slytherin", "damage with spells");
+            default:
+                throw new RuntimeException("Invalid house index: " + houseIndex);
+        }
     }
 }
-
-
-
-
