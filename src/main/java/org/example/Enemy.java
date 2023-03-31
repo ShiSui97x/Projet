@@ -14,17 +14,17 @@ public class Enemy extends AbstractEnemy {
 
     @Override
     public void attack(Character enemy) {
-        enemy.takeDamage(this.getDamage());
+        enemy.takeDamage(this.damage);
     }
 
     @Override
     public String toString() {
         return "Enemy{" +
                 "name='" + name + '\'' +
-                ", healthPoints=" + this.getHealthPoints() +
-                ", damage=" + this.getDamage() +
-                ", defense=" + this.getDefense() +
-                ", level=" + this.getLevel() +
+                ", healthPoints=" + this.healthPoints +
+                ", damage=" + this.damage +
+                ", defense=" + this.defense +
+                ", level=" + this.level +
                 '}';
     }
 }

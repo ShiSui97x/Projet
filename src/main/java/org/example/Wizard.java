@@ -19,8 +19,8 @@ public class Wizard {
 
     public void castSpell(Spell spell, Wizard target) {
         double successRate = Math.random();
-        if (successRate < spell.getSuccessRate()) {
-            int damage = spell.getDamage();
+        if (successRate < spell.successRate) {
+            int damage = spell.damage;
             target.takeDamage(damage);
         } else {
             System.out.println("Spell failed!");

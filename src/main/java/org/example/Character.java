@@ -6,11 +6,19 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 public abstract class Character {
-    private String name;
-    private int healthPoints;
+    public int healthPoints;
     public int damage;
-    private int defense;
-    private int level;
+    public int defense;
+    public int level;
+    public String name;
+
+    public Character(int healthPoints, int damage, int defense, int level, String name){
+        this.healthPoints = healthPoints;
+        this.damage = damage;
+        this.defense= defense;
+        this.level = level;
+        this.name = name;
+    }
 
     public abstract void attack(Character enemy);
 

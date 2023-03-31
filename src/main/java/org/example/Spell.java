@@ -14,11 +14,11 @@ public class Spell extends AbstractSpell {
 
     @Override
     public void cast(Character target) {
-        if (Math.random() < getSuccessRate() / 100.0) {
-            target.takeDamage(getDamage());
-            System.out.println("Spell " + getName() + " successfully cast on " + target.getName() + " for " + getDamage() + " damage.");
+        if (Math.random() < successRate / 100.0) {
+            target.takeDamage(damage);
+            System.out.println("Spell " + name + " successfully cast on " + target.name + " for " + damage + " damage.");
         } else {
-            System.out.println("Spell " + getName() + " failed to cast on " + target.getName() + ".");
+            System.out.println("Spell " + name + " failed to cast on " + target.name + ".");
         }
     }
 }
