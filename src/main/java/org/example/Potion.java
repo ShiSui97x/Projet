@@ -1,7 +1,11 @@
 package org.example;
 
+import lombok.Getter;
+
 public class Potion {
+    @Getter
     private String name;
+    @Getter
     private int healingPower;
 
     public Potion(String name, int healingPower) {
@@ -9,16 +13,8 @@ public class Potion {
         this.healingPower = healingPower;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getHealingPower() {
-        return healingPower;
-    }
-
     public void use(Wizard wizard) {
-        wizard.setHealthPoints(wizard.getHealthPoints() + healingPower);
+        wizard.getPotions(wizard.getHealthPoints() + healingPower);
     }
 }
 

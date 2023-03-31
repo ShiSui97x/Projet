@@ -1,9 +1,13 @@
 package org.example;
 
-public abstract class AbstractSpell {
+import lombok.Getter;
 
+public abstract class AbstractSpell {
+    @Getter
     private String name;
+    @Getter
     private int baseDamage;
+    @Getter
     private int baseSuccessRate;
 
     public AbstractSpell(String name, int baseDamage, int baseSuccessRate) {
@@ -12,23 +16,9 @@ public abstract class AbstractSpell {
         this.baseSuccessRate = baseSuccessRate;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getBaseDamage() {
-        return baseDamage;
-    }
-
-    public int getBaseSuccessRate() {
-        return baseSuccessRate;
-    }
-
-    public abstract int getFinalDamage(Wizard wizard, Enemy enemy);
-
-    public abstract int getFinalSuccessRate(Wizard wizard, Enemy enemy);
-
     public abstract int getDamage();
+
+    public abstract void cast(Wizard wizard);
 }
 
 

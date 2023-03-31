@@ -1,8 +1,13 @@
 package org.example;
 
+import lombok.Getter;
+
 public class Wizard extends Character {
+    @Getter
     private Pet pet;
+    @Getter
     private Wand wand;
+    @Getter
     private House house;
     private List<Spell> knownSpells;
     private List<Potion> potions;
@@ -14,18 +19,6 @@ public class Wizard extends Character {
         this.house = house;
         this.knownSpells = new ArrayList<>();
         this.potions = new ArrayList<>();
-    }
-
-    public Pet getPet() {
-        return pet;
-    }
-
-    public Wand getWand() {
-        return wand;
-    }
-
-    public House getHouse() {
-        return house;
     }
 
     public List<Spell> getKnownSpells() {

@@ -1,32 +1,19 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 public class Spell extends AbstractSpell {
+    @Getter
+    @Setter
     private int damage;
+    @Getter
+    @Setter
     private int precision;
 
-    public Spell(String name, int successRate, int damage, int precision) {
-        super(name, successRate);
-        this.damage =
-                damage;
-        this.precision = precision;
-    }
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
+    public Spell(String name, int successRate, int damage,) {
+        super(name,successRate,damage);
         this.damage = damage;
-    }
-
-    public int getPrecision() {
-        return precision;
-    }
-
-    public void setPrecision(int precision) {
         this.precision = precision;
     }
 

@@ -1,13 +1,27 @@
 package org.example;
 
-public abstract class Character {
+import lombok.Getter;
+import lombok.Setter;
 
+public abstract class Character {
+    @Getter
+    @Setter
     private String name;
     private int maxHP;
+    @Getter
+    @Setter
     private int currentHP;
+    @Getter
+    @Setter
     private int damage;
+    @Getter
+    @Setter
     private int defense;
+    @Getter
+    @Setter
     private int accuracy;
+    @Getter
+    @Setter
     private House house;
 
     public Character(String name, int maxHP, int damage, int defense, int accuracy) {
@@ -18,56 +32,7 @@ public abstract class Character {
         this.defense = defense;
         this.accuracy = accuracy;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getMaxHP() {
-        return maxHP;
-    }
-
-    public int getCurrentHP() {
-        return currentHP;
-    }
-
-    public void setCurrentHP(int currentHP) {
-        this.currentHP = currentHP;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(int accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public House getHouse() {
-        return house;
-    }
-
-    public void setHouse(House house) {
-        this.house = house;
-        house.applyHouseBonus(this);
-    }
-
+    house.applyHouseBonus(this);
     public abstract void attack(Character character);
 
     public void defend(Character character) {
