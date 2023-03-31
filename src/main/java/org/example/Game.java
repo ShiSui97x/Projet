@@ -1,5 +1,6 @@
 package org.example;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class Game {
@@ -24,7 +25,7 @@ public class Game {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (wizard.isAlive() && currentLevelIndex < levels.size()) {
+        while (wizard.isAlive() && (currentLevelIndex < levels.size())) {
             Level level = levels.get(currentLevelIndex);
             System.out.println("Level " + level.getLevelNumber() + ":");
             System.out.println("You are facing " + level.getEnemy().getName() + "!");

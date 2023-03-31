@@ -1,7 +1,9 @@
 package org.example;
 
-public class House {
+import lombok.Getter;
 
+public class House {
+    @Getter
     private String name;
 
     public House(String name) {

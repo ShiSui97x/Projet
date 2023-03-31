@@ -1,7 +1,14 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Reward {
+    @Getter
+    @Setter
     private int healthPoints;
+    @Getter
+    @Setter
     private int damagePoints;
 
     public Reward(int healthPoints, int damagePoints) {
@@ -9,20 +16,6 @@ public class Reward {
         this.damagePoints = damagePoints;
     }
 
-    public int getHealthPoints() {
-        return healthPoints;
-    }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public int getDamagePoints() {
-        return damagePoints;
-    }
-
-    public void setDamagePoints(int damagePoints) {
-        this.damagePoints = damagePoints;
-    }
 }
 

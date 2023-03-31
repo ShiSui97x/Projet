@@ -3,13 +3,13 @@ package org.example;
 public abstract class AbstractEnemy extends Character {
 
     public AbstractEnemy(String name, int maxHP, int damage, int defense, int accuracy) {
-        super(name, maxHP, damage, defense, accuracy);
+        super(name, maxHP, damage, defense);
     }
 
     public abstract void specialAttack(Character character);
 
     @Override
-    public void defend() {
+    public void defend(Character enemy) {
         System.out.println(getName() + " se prépare à encaisser une attaque...");
         setDefense(getDefense() * 2);
     }

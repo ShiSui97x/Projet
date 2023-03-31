@@ -3,28 +3,31 @@ package org.example;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Character {
     @Getter
     @Setter
-    private String name;
-    private int maxHP;
+    public String name;
+    public int maxHP;
     @Getter
     @Setter
-    private int currentHP;
+    public int currentHP;
     @Getter
     @Setter
-    private int damage;
+    public int damage;
     @Getter
     @Setter
-    private int defense;
+    public int defense;
     @Getter
     @Setter
-    private int accuracy;
+    public int accuracy;
     @Getter
     @Setter
-    private House house;
+    public House house;
 
-    public Character(String name, int maxHP, int damage, int defense, int accuracy) {
+    public Character(String name, int maxHP, int damage, int defense) {
         this.name = name;
         this.maxHP = maxHP;
         this.currentHP = maxHP;
@@ -32,13 +35,13 @@ public abstract class Character {
         this.defense = defense;
         this.accuracy = accuracy;
     }
-    house.applyHouseBonus(this);
     public abstract void attack(Character character);
+    public abstract void defend(Character character);
 
-    public void defend(Character character) {
-        // Défendre diminue les dégâts reçus en fonction de la valeur de défense.
-        int damageTaken = Math.max(0, character.getDamage() - this.defense);
-        this.currentHP = Math.max(0, this.currentHP - damageTaken);
+    public List<Potion> getPotions() {
+        List<String> potions= new ArrayList<>();
+        potions.add("healingPotion");
+        return potions;
     }
 }
 

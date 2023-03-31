@@ -16,6 +16,7 @@ public abstract class AbstractSpell {
         this.baseSuccessRate = baseSuccessRate;
     }
 
+
     public abstract int getDamage();
 
     public abstract void cast(Wizard wizard);

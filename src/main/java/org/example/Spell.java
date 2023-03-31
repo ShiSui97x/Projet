@@ -3,6 +3,9 @@ package org.example;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Spell extends AbstractSpell {
     @Getter
     @Setter
@@ -10,12 +13,18 @@ public class Spell extends AbstractSpell {
     @Getter
     @Setter
     private int precision;
+    @Getter
+    @Setter
+    public String name;
 
-    public Spell(String name, int successRate, int damage,) {
-        super(name,successRate,damage);
+    public List<String> knowSpells;
+
+    public Spell(String name, int successRate, int damage) {
+        super(name, successRate, damage);
         this.damage = damage;
-        this.precision = precision;
+
     }
+
 
     @Override
     public void cast(Wizard wizard) {
@@ -36,6 +45,15 @@ public class Spell extends AbstractSpell {
                 System.out.println("Sort inconnu : " + this.getName());
         }
     }
+
+    public int getSuccessChance() {
+        switch(this.name){
+            case "Wingardium Leviosa":
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + this.name);
+        }
+
     }
 }
 

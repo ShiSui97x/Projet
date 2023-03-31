@@ -2,6 +2,10 @@ package org.example;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Wizard extends Character {
     @Getter
     private Pet pet;
@@ -9,42 +13,21 @@ public class Wizard extends Character {
     private Wand wand;
     @Getter
     private House house;
-    private List<Spell> knownSpells;
-    private List<Potion> potions;
+    @Getter
+    public List<Spell> knownSpells = new ArrayList<>();
+    @Getter
+    public List<Potion> potions = new ArrayList<>();
 
     public Wizard(String name, int maxHp, int damage, int defense, Pet pet, Wand wand, House house) {
         super(name, maxHp, damage, defense);
         this.pet = pet;
         this.wand = wand;
         this.house = house;
-        this.knownSpells = new ArrayList<>();
-        this.potions = new ArrayList<>();
-    }
-
-    public List<Spell> getKnownSpells() {
-        return knownSpells;
-    }
-
-    public List<Potion> getPotions() {
-        return potions;
-    }
-
-    public void learnSpell(Spell spell) {
-        knownSpells.add(spell);
-    }
-
-    public void addPotion(Potion potion) {
-        potions.add(potion);
-    }
-    public void defend() {
-        int diceRoll = Dice.roll(); // Roll a dice to determine defense effectiveness
-        int damageReduction = diceRoll * this.getDefense();
-        this.takeDamage(damageReduction);
     }
 
     @Override
     public void attack(Character character) {
-        int diceRoll = Dice.roll(); // Roll a dice to determine attack effectiveness
+        int diceRoll = new Random().nextInt(50);
         int damageDealt = diceRoll * this.getDamage();
         if (knownSpells.size() > 0) {
             Spell spell = knownSpells.get(new Random().nextInt(knownSpells.size())); // Choose a random known spell
@@ -60,5 +43,17 @@ public class Wizard extends Character {
         character.takeDamage(damageDealt);
     }
 
+    @Override
+    public void defend(Character character) {
+        // Défendre diminue les dégâts reçus en fonction de la valeur de défense.
+        int damageTaken = Math.max(0, character.getDamage() - this.defense);
+        this.currentHP = Math.max(0, this.currentHP - damageTaken);
+    }
+
+    public boolean isAlive() {
+
+
+    }
 }
+
 
