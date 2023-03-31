@@ -9,7 +9,7 @@ public class SortingHat {
         this.random = new Random();
     }
 
-    public House assignHouse() {
+    public House assignHouse(Wizard player) {
         int houseIndex = random.nextInt(4);
         switch (houseIndex) {
             case 0:

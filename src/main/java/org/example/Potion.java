@@ -1,19 +1,19 @@
 package org.example;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@AllArgsConstructor
 @Getter
-@Setter
 public class Potion {
     private String name;
-    private int potency;
-    private String effect;
+    private int healing;
 
-    public Potion(String name, int potency, String effect) {
-        this.name = name;
-        this.potency = potency;
-        this.effect = effect;
+    public void use(Wizard wizard) {
+        wizard.usePotion(this);
+    }
+
+    public int getHealing() {
+        return this.healing;
     }
 }
 

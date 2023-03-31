@@ -1,65 +1,46 @@
 package org.example;
 
-import lombok.*;
-
-import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Getter
-@Setter
-public class Wizard extends Character {
-    private Pet pet;
+@AllArgsConstructor
+@Getter @Setter
+public class Wizard {
+    private String name;
+    private int healthPoints;
+    private int damagePoints;
     private Wand wand;
     private House house;
+    private Pet pet;
     private List<Spell> knownSpells;
     private List<Potion> potions;
 
-    public Wizard(int healthPoints, int damage, int defense, int level, Pet pet, Wand wand, House house) {
-        super(healthPoints, damage, defense, level);
-        this.pet = pet;
-        this.wand = wand;
-        this.house = house;
-        this.knownSpells = new ArrayList<>();
-        this.potions = new ArrayList<>();
+    public void castSpell(Spell spell, Wizard target) {
+        double successRate = Math.random();
+        if (successRate < spell.getSuccessRate()) {
+            int damage = spell.getDamage();
+            target.takeDamage(damage);
+        } else {
+            System.out.println("Spell failed!");
+        }
     }
 
-    @Override
-    public void attack(Character enemy) {
-        int spellDamage = wand.getCore().getPower() * wand.getSize() * level;
-        if (knownSpells.contains(Spell.EXPELLIARMUS)) {
-            System.out.println("Expelliarmus!");
-            spellDamage += 10;
+    public void takeDamage(int damage) {
+        this.healthPoints -= damage;
+        if (this.healthPoints <= 0) {
+            System.out.println(this.name + " has been defeated!");
         }
-        if (enemy instanceof AbstractEnemy) {
-            spellDamage *= 2;
-        }
-        System.out.printf("Wizard attacks for %d damage!\n", spellDamage);
-        enemy.takeDamage(spellDamage);
-    }
-
-    public void defend() {
-        System.out.println(this + " defends with magic shield!");
-        setDefense(getDefense() + 10);
-    }
-
-    public void castSpell(Spell spell, Character target) {
-        if (!knownSpells.contains(spell)) {
-            System.out.printf("Wizard does not know the %s spell!\n", spell);
-            return;
-        }
-        int spellDamage = spell.getPower() * level;
-        System.out.printf("Wizard casts %s for %d damage!\n", spell, spellDamage);
-        target.takeDamage(spellDamage);
     }
 
     public void usePotion(Potion potion) {
-        if (!potions.contains(potion)) {
-            System.out.printf("Wizard does not have a %s potion!\n", potion);
-            return;
-        }
-        int healing = potion.getHealing() * level;
-        System.out.printf("Wizard uses %s for %d healing!\n", potion, healing);
-        healthPoints += healing;
+        int healing = potion.getHealing();
+        this.healthPoints += healing;
+    }
+
+    public void defend() {
+        this.damagePoints /= 2;
     }
 }
 
