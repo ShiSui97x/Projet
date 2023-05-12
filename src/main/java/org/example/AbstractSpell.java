@@ -19,7 +19,9 @@ public abstract class AbstractSpell {
         this.successRate=successRate;
     }
 
-    public abstract void cast(Character target);
+    public void cast(Character target){
+
+    }
 }
 
 

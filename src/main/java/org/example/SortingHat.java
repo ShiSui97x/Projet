@@ -1,15 +1,18 @@
 package org.example;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Random;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter@Setter
 public class SortingHat {
-    private final Random random;
+    private Random random;
 
-    public SortingHat() {
-        this.random = new Random();
-    }
-
-    public House assignHouse(Wizard player) {
+    public House assignHouse() {
         int houseIndex = random.nextInt(4);
         switch (houseIndex) {
             case 0:

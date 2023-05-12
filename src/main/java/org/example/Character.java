@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 public abstract class Character {
     public int healthPoints;
     public int damage;

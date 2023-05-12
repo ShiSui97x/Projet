@@ -3,10 +3,10 @@ package org.example;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 public class Wizard {
     private String name;
     private int healthPoints;
@@ -26,15 +26,20 @@ public class Wizard {
             System.out.println("Spell failed!");
         }
     }
+    public House setHouse(SortingHat sortingHat) {
+        this.house = sortingHat.assignHouse();
+        return house;
+    }
 
-    public void takeDamage(int damage) {
-        this.healthPoints -= damage;
-        if (this.healthPoints <= 0) {
-            System.out.println(this.name + " has been defeated!");
+    public void takeDamage(int damage){
+            this.healthPoints -= damage;
+            if (this.healthPoints <= 0) {
+                System.out.println(this.name + " has been defeated!");
+            }
         }
     }
 
-    public void usePotion(Potion potion) {
+   public void usePotion(Potion potion) {
         int healing = potion.getHealing();
         this.healthPoints += healing;
     }

@@ -2,14 +2,13 @@ package org.example;
 
 
 import lombok.Getter;
+import lombok.Setter;
 
 
-
-@Getter
+@Getter @Setter
 public class House {
-    private final String name;
-    private final String specialty;
-
+    private String name;
+    private String specialty;
     public House(String name, String specialty){
         this.name=name;
         this.specialty=specialty;

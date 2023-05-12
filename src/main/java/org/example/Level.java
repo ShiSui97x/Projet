@@ -4,7 +4,6 @@ package org.example;
 import lombok.Getter;
 
 @Getter
-
 public class Level {
     private final int number;
     private final String name;
